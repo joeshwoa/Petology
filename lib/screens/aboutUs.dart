@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petology/components/dogCart.dart';
 import 'package:petology/components/footer.dart';
 import 'package:petology/components/topBar.dart';
 
@@ -306,6 +307,27 @@ class _aboutUsState extends State<aboutUs> {
                 ],
               ),
             ),
+            Container(
+              width: width,
+              height: height/2,
+              child: Column(
+                children: [
+                  Text("Our frinds who",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22,)),
+                  Text("Looking for a house",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22,)),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(width: width/2,
+                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: [
+                        dogCart(height: height,width: width,),
+                        dogCart(height: height,width: width,),
+                        dogCart(height: height,width: width,),
+                      ],),
+                    ),
+                  )
+                ],
+              ),
+            ),
+
             footer(width: width, height: height),
           ],
         ),
