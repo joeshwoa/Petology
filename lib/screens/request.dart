@@ -18,6 +18,7 @@ class _requestState extends State<request> {
       year,
       months,
       petSize,
+      gender,
       breed1,
       breed2,
       hair,
@@ -45,7 +46,7 @@ class _requestState extends State<request> {
     return Scaffold(
       body: Container(
         width: width,
-        height: height,
+        height: height * 1.3,
         child: ListView(
           children: [
             topBar(
@@ -59,16 +60,16 @@ class _requestState extends State<request> {
                 signInChoosen: false,
                 loginChoosen: false),
             Container(
-              width: width,
-              height: height * 1.5,
+              width: width * 1.3,
+              height: height * 1.7,
               child: Column(
                 children: [
                   SizedBox(
                     height: height * 0.1,
                   ),
                   Container(
-                    height: height * 1.3,
-                    width: width * 0.5,
+                    height: height * 1.6,
+                    width: width * 0.6,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(width: 1, color: Color(0xFF593C30)),
@@ -113,81 +114,20 @@ class _requestState extends State<request> {
                                 labelText: "Name",
                                 fillColor: Colors.white,
                                 filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
                                 labelStyle: const TextStyle(
-                                    fontSize: 20, color: Color(0xFFA69994)),
+                                  fontSize: 20,
+                                  color: Color(0xFFA69994),
+                                ),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                                    borderRadius: BorderRadius.circular(30))),
                             keyboardType: TextInputType.name,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 5),
-                          child: TextField(
-                            onChanged: (g) {
-                              name = nameController.text;
-                            },
-                            controller: nameController,
-                            style:
-                                const TextStyle(color: Colors.black, shadows: [
-                              Shadow(color: Colors.grey, blurRadius: 3),
-                            ]),
-                            decoration: InputDecoration(
-                                labelText: "Name",
-                                fillColor: Colors.white,
-                                filled: true,
-                                labelStyle: const TextStyle(
-                                    fontSize: 20, color: Color(0xFFA69994)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            keyboardType: TextInputType.name,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 5),
-                          child: TextField(
-                            onChanged: (g) {
-                              name = nameController.text;
-                            },
-                            controller: nameController,
-                            style:
-                                const TextStyle(color: Colors.black, shadows: [
-                              Shadow(color: Colors.grey, blurRadius: 3),
-                            ]),
-                            decoration: InputDecoration(
-                                labelText: "Name",
-                                fillColor: Colors.white,
-                                filled: true,
-                                labelStyle: const TextStyle(
-                                    fontSize: 20, color: Color(0xFFA69994)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            keyboardType: TextInputType.name,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 5),
-                          child: TextField(
-                            onChanged: (g) {
-                              name = nameController.text;
-                            },
-                            controller: nameController,
-                            style:
-                                const TextStyle(color: Colors.black, shadows: [
-                              Shadow(color: Colors.grey, blurRadius: 3),
-                            ]),
-                            decoration: InputDecoration(
-                                labelText: "Name",
-                                fillColor: Colors.white,
-                                filled: true,
-                                labelStyle: const TextStyle(
-                                    fontSize: 20, color: Color(0xFFA69994)),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            keyboardType: TextInputType.name,
-                          ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
@@ -201,72 +141,299 @@ class _requestState extends State<request> {
                                 const TextStyle(color: Colors.black, shadows: [
                               Shadow(color: Colors.grey, blurRadius: 3),
                             ]),
-
                             decoration: InputDecoration(
                                 labelText: "Category",
                                 fillColor: Colors.white,
                                 filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
                                 labelStyle: const TextStyle(
                                     fontSize: 20, color: Color(0xFFA69994)),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(30))),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 5),
+                          child: TextField(
+                            onChanged: (g) {
+                              year = yearController.text;
+                            },
+                            controller: yearController,
+                            style:
+                                const TextStyle(color: Colors.black, shadows: [
+                              Shadow(color: Colors.grey, blurRadius: 3),
+                            ]),
+                            decoration: InputDecoration(
+                                labelText: "Year",
+                                fillColor: Colors.white,
+                                filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
+                                labelStyle: const TextStyle(
+                                    fontSize: 20, color: Color(0xFFA69994)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30))),
+                            keyboardType: TextInputType.datetime,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 5),
+                          child: TextField(
+                            onChanged: (g) {
+                              months = monthsController.text;
+                            },
+                            controller: monthsController,
+                            style:
+                                const TextStyle(color: Colors.black, shadows: [
+                              Shadow(color: Colors.grey, blurRadius: 3),
+                            ]),
+                            decoration: InputDecoration(
+                                labelText: "Months",
+                                fillColor: Colors.white,
+                                filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
+                                labelStyle: const TextStyle(
+                                    fontSize: 20, color: Color(0xFFA69994)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30))),
+                            keyboardType: TextInputType.datetime,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 5),
+                          child: TextField(
+                            onChanged: (g) {
+                              petSize = petSizeController.text;
+                            },
+                            controller: petSizeController,
+                            style:
+                                const TextStyle(color: Colors.black, shadows: [
+                              Shadow(color: Colors.grey, blurRadius: 3),
+                            ]),
+                            decoration: InputDecoration(
+                              labelText: "Size",
+                              fillColor: Colors.white,
+                              filled: true,
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 30, vertical: 20),
+                              isDense: true,
+                              labelStyle: const TextStyle(
+                                  fontSize: 20, color: Color(0xFFA69994)),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30)),
                             ),
-
                           ),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20.0, vertical: 5),
                           child: TextField(
                             onChanged: (g) {
-                              name = nameController.text;
+                              gender = genderController.text;
                             },
-                            controller: nameController,
+                            controller: genderController,
                             style:
                                 const TextStyle(color: Colors.black, shadows: [
                               Shadow(color: Colors.grey, blurRadius: 3),
                             ]),
                             decoration: InputDecoration(
-                                labelText: "Name",
+                                labelText: "Breed",
                                 fillColor: Colors.white,
                                 filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
                                 labelStyle: const TextStyle(
                                     fontSize: 20, color: Color(0xFFA69994)),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            keyboardType: TextInputType.name,
+                                    borderRadius: BorderRadius.circular(30))),
                           ),
-
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20.0, vertical: 5),
                           child: TextField(
                             onChanged: (g) {
-                              name = nameController.text;
+                              breed2 = breed2Controller.text;
                             },
-                            controller: nameController,
+                            controller: breed2Controller,
                             style:
                                 const TextStyle(color: Colors.black, shadows: [
                               Shadow(color: Colors.grey, blurRadius: 3),
                             ]),
                             decoration: InputDecoration(
-                                labelText: "Name",
+                                labelText: "Breed",
                                 fillColor: Colors.white,
                                 filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
                                 labelStyle: const TextStyle(
                                     fontSize: 20, color: Color(0xFFA69994)),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            keyboardType: TextInputType.name,
+                                    borderRadius: BorderRadius.circular(30)
+                                )
+                            ),
                           ),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 5),
+                          child: TextField(
+                            onChanged: (g) {
+                              hair = hairController.text;
+                            },
+                            controller: hairController,
+                            style:
+                            const TextStyle(color: Colors.black, shadows: [
+                              Shadow(color: Colors.grey, blurRadius: 3),
+                            ]),
+                            decoration: InputDecoration(
+                                labelText: "Hair Length",
+                                fillColor: Colors.white,
+                                filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
+                                labelStyle: const TextStyle(
+                                    fontSize: 20, color: Color(0xFFA69994)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30)
+                                )
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 5),
+                          child: TextField(
+                            onChanged: (g) {
+                              hair = hairController.text;
+                            },
+                            controller: hairController,
+                            style:
+                            const TextStyle(color: Colors.black, shadows: [
+                              Shadow(color: Colors.grey, blurRadius: 3),
+                            ]),
+                            decoration: InputDecoration(
+                                labelText: "Care & behaviour",
+                                fillColor: Colors.white,
+                                filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
+                                labelStyle: const TextStyle(
+                                    fontSize: 20, color: Color(0xFFA69994)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30)
+                                )
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 5),
+                          child: TextField(
+                            onChanged: (g) {
+                              hair = hairController.text;
+                            },
+                            controller: hairController,
+                            style:
+                            const TextStyle(color: Colors.black, shadows: [
+                              Shadow(color: Colors.grey, blurRadius: 3),
+                            ]),
+                            decoration: InputDecoration(
+                                labelText: "Hair Traind",
+                                fillColor: Colors.white,
+                                filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
+                                labelStyle: const TextStyle(
+                                    fontSize: 20, color: Color(0xFFA69994)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30)
+                                )
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 5),
+                          child: TextField(
+                            onChanged: (g) {
+                              hair = hairController.text;
+                            },
+                            controller: hairController,
+                            style:
+                            const TextStyle(color: Colors.black, shadows: [
+                              Shadow(color: Colors.grey, blurRadius: 3),
+                            ]),
+                            decoration: InputDecoration(
+                                labelText: "Color",
+                                fillColor: Colors.white,
+                                filled: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 20),
+                                isDense: true,
+                                labelStyle: const TextStyle(
+                                    fontSize: 20, color: Color(0xFFA69994)),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30)
+                                )
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+
+
                       ],
                     ),
                   ),
                 ],
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
+
             footer(width: width, height: height)
           ],
         ),
