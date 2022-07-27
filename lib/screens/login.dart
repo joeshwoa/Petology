@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:petology/components/footer.dart';
 import 'package:petology/components/topBar.dart';
+import 'package:petology/models/LogIn.dart';
+
+import '../components/textButton.dart';
+import '../models/AuthenticationController.dart';
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -11,9 +15,10 @@ class login extends StatefulWidget {
 
 class _loginState extends State<login> {
   var size, height, width;
-  var email, password;
+  late String email, password;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  late Future<LogIn> futureLogIN;
 
   @override
   Widget build(BuildContext context) {
@@ -137,19 +142,26 @@ class _loginState extends State<login> {
                                           ),
                                         ),
                                       ),
-                                      Container(
-                                        width: width / 4,
-                                        height: 50,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xFF492F24),
-                                            borderRadius:
-                                            BorderRadius.circular(10)),
-                                        child: Center(
-                                            child: Text("Login",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20))),
+                                      GestureDetector(
+                                        child: Container(
+                                          width: width / 4,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                              color: Color(0xFF492F24),
+                                              borderRadius:
+                                              BorderRadius.circular(10)),
+                                          child: Center(
+                                              child: Text("Login",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 20))),
+                                        ),
+                                        onTap: (){
+                                          setState(() {
+                                            futureLogIN = AuthenticationController().getLogIn(email,password);
+                                          });
+                                        },
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(10.0),

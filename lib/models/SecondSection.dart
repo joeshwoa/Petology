@@ -1,4 +1,7 @@
 class SecondSection{
-  var title,body;
-  SecondSection(this.title,this.body);
+  final String title,body;
+  const SecondSection({required this.title, required this.body});
+  factory SecondSection.fromJson(Map<String,dynamic> json){
+    return SecondSection(title: json['title'], body: json['body']);
+  }
 }
