@@ -97,7 +97,7 @@ class _topBarState extends State<topBar> {
                       height: 40,
                       child: Center(
                           child: Text(
-                        'Sign in',
+                        'Sign up',
                         style: TextStyle(
                             color: widget.signInChoosen
                                 ? Colors.black

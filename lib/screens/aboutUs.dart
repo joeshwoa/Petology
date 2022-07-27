@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:petology/components/dogCart.dart';
 import 'package:petology/components/footer.dart';
+import 'package:petology/models/SecondSection.dart';
+import 'package:petology/models/StaticController.dart';
 import 'package:petology/components/topBar.dart';
+import 'package:petology/models/FirstSction.dart';
 
 class aboutUs extends StatefulWidget {
   const aboutUs({Key? key}) : super(key: key);
@@ -13,8 +16,19 @@ class aboutUs extends StatefulWidget {
 class _aboutUsState extends State<aboutUs> {
   var size, height, width;
   int kind = 0; //1=dog,2=cat
+  late Future<FirstSction> futureFirstSection;
+  late Future<SecondSection> futureSecondSection;
+  @override
+  void initState() {
+    super.initState();
+    futureFirstSection = StaticController().getFirstSction();
+    futureSecondSection = StaticController().getSecondSction();
+
+
+  }
   @override
   Widget build(BuildContext context) {
+
     size = MediaQuery.of(context).size;
     height = size.height;
     width = size.width;
@@ -67,17 +81,39 @@ class _aboutUsState extends State<aboutUs> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Data", //TODO
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold)),
-                            Text("data", //TODO
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 15)),
-                            SizedBox(
-                              height: 10,
-                            ),
+                            FutureBuilder<FirstSction>(
+                                future: futureFirstSection,
+                                builder: (context, snapshot) {
+                                  if(snapshot.hasData){
+                                    return Text(snapshot.data!.title, style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold));
+                                  }
+                                  else{
+                                    return Text("error");
+                                  }
+                                  return const CircularProgressIndicator();
+                                }),
+                            FutureBuilder<FirstSction>(
+                                future: futureFirstSection,
+                                builder: (context, snapshot) {
+                                  if(snapshot.hasData){
+                                    return Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Container(width: width*0.4,
+                                        child: Text(snapshot.data!.body,maxLines: 4, style: TextStyle(
+                                            color: Colors.white, fontSize: 15,overflow: TextOverflow.ellipsis,)),
+                                      ),
+                                    );
+                                  }
+                                  else{
+                                    return Text("error");
+                                  }
+                                  return const CircularProgressIndicator();
+                                }),
+
+
                             GestureDetector(
                                 onTap: () {},
                                 child: Container(
@@ -163,18 +199,42 @@ class _aboutUsState extends State<aboutUs> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                "Data",  //TODO
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "data",  //TODO
-                                style: TextStyle(
-                                    color: Color(0xFF585858), fontSize: 18),
-                              )
+                              FutureBuilder<SecondSection>(
+                                  future: futureSecondSection,
+                                  builder: (context, snapshot) {
+                                    if(snapshot.hasData){
+                                      return
+                                           Text(snapshot.data!.title,style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold)
+                                          );
+
+
+                                    }
+                                    else{
+                                      return Text("error");
+                                    }
+                                    return const CircularProgressIndicator();
+                                  }),
+                              FutureBuilder<SecondSection>(
+                                  future: futureSecondSection,
+                                  builder: (context, snapshot) {
+                                    if(snapshot.hasData){
+                                      return Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Container(width: width*0.4,
+                                          child: Text(snapshot.data!.body,maxLines: 8,  style: TextStyle(
+                                              color: Color(0xFF585858), fontSize: 18),
+                                      ),
+                                        ),
+                                      );
+                                    }
+                                    else{
+                                      return Text("error");
+                                    }
+                                    return const CircularProgressIndicator();
+                                  }),
                             ],
                           ),
                         ),
@@ -201,7 +261,7 @@ class _aboutUsState extends State<aboutUs> {
                     child: Column(
                       children: [
                         Text(
-                          'Data',  //TODO
+                          'Lets get this right .....',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Color(0xFF492F24),
@@ -211,7 +271,7 @@ class _aboutUsState extends State<aboutUs> {
                           height: 10,
                         ),
                         Text(
-                          'data',  //TODO
+                          'What kind of friend you looking for?',
                           style:
                               TextStyle(color: Color(0xFF492F24), fontSize: 20),
                         ),

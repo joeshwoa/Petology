@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:petology/models/Footer.dart';
+import 'package:petology/models/StaticController.dart';
 
 class footer extends StatefulWidget {
   const footer({Key? key, required this.width, required this.height})
       : super(key: key);
   final double width;
   final double height;
+
   @override
   State<footer> createState() => _footerState();
 }
 
 class _footerState extends State<footer> {
+  late Future<Footer> futureFooter;
+
+  @override
+  void initState() {
+    super.initState();
+    futureFooter = StaticController().getFooter();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +47,7 @@ class _footerState extends State<footer> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Data",
+                  "For any questions",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -51,10 +62,19 @@ class _footerState extends State<footer> {
                     SizedBox(
                       width: 15,
                     ),
-                    Text(
-                      "data",
-                      style: TextStyle(color: Color(0xFFAE957B)),
-                    )
+                    FutureBuilder<Footer>(
+                        future: futureFooter,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              snapshot.data!.email,
+                              style: TextStyle(color: Color(0xFFAE957B)),
+                            );
+                          } else {
+                            return Text("error");
+                          }
+                          return const CircularProgressIndicator();
+                        }),
                   ],
                 ),
                 SizedBox(
@@ -66,10 +86,19 @@ class _footerState extends State<footer> {
                     SizedBox(
                       width: 15,
                     ),
-                    Text(
-                      "data",
-                      style: TextStyle(color: Color(0xFFAE957B)),
-                    )
+                    FutureBuilder<Footer>(
+                        future: futureFooter,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              snapshot.data!.phone,
+                              style: TextStyle(color: Color(0xFFAE957B)),
+                            );
+                          } else {
+                            return Text("error");
+                          }
+                          return const CircularProgressIndicator();
+                        }),
                   ],
                 )
               ],
@@ -84,7 +113,7 @@ class _footerState extends State<footer> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Data",
+                  "We are waiting you",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -99,10 +128,19 @@ class _footerState extends State<footer> {
                     SizedBox(
                       width: 15,
                     ),
-                    Text(
-                      "data",
-                      style: TextStyle(color: Color(0xFFAE957B)),
-                    )
+                    FutureBuilder<Footer>(
+                        future: futureFooter,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              snapshot.data!.location,
+                              style: TextStyle(color: Color(0xFFAE957B)),
+                            );
+                          } else {
+                            return Text("error");
+                          }
+                          return const CircularProgressIndicator();
+                        }),
                   ],
                 ),
                 SizedBox(
@@ -114,10 +152,19 @@ class _footerState extends State<footer> {
                     SizedBox(
                       width: 15,
                     ),
-                    Text(
-                      "data",
-                      style: TextStyle(color: Color(0xFFAE957B)),
-                    )
+                    FutureBuilder<Footer>(
+                        future: futureFooter,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              snapshot.data!.loction2,
+                              style: TextStyle(color: Color(0xFFAE957B)),
+                            );
+                          } else {
+                            return Text("error");
+                          }
+                          return const CircularProgressIndicator();
+                        }),
                   ],
                 )
               ],

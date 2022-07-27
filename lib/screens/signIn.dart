@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:petology/components/footer.dart';
 import 'package:petology/components/topBar.dart';
+import 'package:petology/models/AuthenticationController.dart';
+import 'package:petology/models/Register.dart';
 
 class signIn extends StatefulWidget {
   const signIn({Key? key}) : super(key: key);
@@ -11,14 +13,14 @@ class signIn extends StatefulWidget {
 
 class _signInState extends State<signIn> {
   var size, height, width;
-  var firstName, lastName, email, password, rePassword,country;
+  var firstName, lastName, email, password, rePassword,country,phone;
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final rePasswordController = TextEditingController();
   final countryController = TextEditingController();
-
+  late Future<Register> futureRegister;
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -80,7 +82,7 @@ class _signInState extends State<signIn> {
                                     height: 20,
                                   ),
                                   Text(
-                                    "Sign in",
+                                    "Sign up",
                                     style: TextStyle(
                                         color: Color(0xFF593C30),
                                         fontSize: 25,
@@ -378,19 +380,26 @@ class _signInState extends State<signIn> {
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    width: width / 4,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xFF492F24),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Center(
-                                        child: Text("Sign in",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20))),
+                                  GestureDetector(
+                                    child: Container(
+                                      width: width / 4,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xFF492F24),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Center(
+                                          child: Text("Sign up",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20))),
+                                    ),
+                                    onTap: (){
+                                      setState(() {
+                                        futureRegister = AuthenticationController().getRegister(email,password,firstName,lastName,phone,country);
+                                      });
+                                    },
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(10.0),
