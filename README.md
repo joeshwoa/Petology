@@ -2,7 +2,7 @@
 <br>
 
 # Petology
-Petology is a mobile application developed with Flutter that connects pet lovers with resources to care for, adopt, or learn more about pets. The app serves as a platform for finding pets for adoption, accessing pet care information, and connecting with other pet owners or service providers.
+Petology is a web application developed with Flutter that connects pet lovers with resources to care for, adopt, or learn more about pets. The app serves as a platform for finding pets for adoption, accessing pet care information, and connecting with other pet owners or service providers.
 
 ## Table of Contents
 1. Overview
